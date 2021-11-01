@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout  xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".PregameFragment">
+
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingVertical="50dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TableRow>
+
+            <ch.rmbi.mels_volley.views.RmbiButtonView
+                android:id="@+id/bAttackLeft"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="onClick"
+                android:text="Attaque Gauche"
+                android:textSize="30dp"
+                android:padding="20dp"
+                app:fontName="Roboto_Black" />
+
+
+            <ch.rmbi.mels_volley.views.RmbiTextView
+                android:id="@+id/tvAttackLeft"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="XX:XX"
+                android:paddingStart="30dp"
+                android:textAlignment="textEnd"
+                android:textSize="30dp"
+                app:fontName="Roboto_Black"
+                android:onClick="onClick"
+                />
+        </TableRow>
+
+
+        <TableRow android:layout_marginTop="30px">
+
+            <ch.rmbi.mels_volley.views.RmbiButtonView
+                android:id="@+id/bAttackRight"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="onClick"
+                android:text="Attaque droite"
+                android:textSize="30dp"
+                android:padding="20dp"
+                app:fontName="Roboto_Black" />
+
+
+            <ch.rmbi.mels_volley.views.RmbiTextView
+                android:id="@+id/tvAttackRight"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="XX:XX"
+                android:paddingStart="30dp"
+                android:textSize="30dp"
+                android:textAlignment="textEnd"
+                app:fontName="Roboto_Black"
+                android:onClick="onClick"
+                />
+        </TableRow>
+
+        <TableRow android:layout_marginTop="30px">
+
+            <ch.rmbi.mels_volley.views.RmbiButtonView
+                android:id="@+id/bService"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="onClick"
+                android:text="Service"
+                android:textSize="30dp"
+                android:padding="20dp"
+                app:fontName="Roboto_Black" />
+
+
+            <ch.rmbi.mels_volley.views.RmbiTextView
+                android:id="@+id/tvService"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="XX:XX"
+                android:paddingStart="30dp"
+                android:textSize="30dp"
+                android:textAlignment="textEnd"
+                app:fontName="Roboto_Black"
+                android:onClick="onClick"
+                />
+        </TableRow>
+
+        <TableRow android:layout_marginTop="30px">
+
+            <ch.rmbi.mels_volley.views.RmbiButtonView
+                android:id="@+id/bApplause"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="onClick"
+                android:text="Applaudissement"
+                android:textSize="30dp"
+                app:fontName="Roboto_Black"
+                android:padding="20dp"
+                />
+
+
+            <ch.rmbi.mels_volley.views.RmbiTextView
+                android:id="@+id/tvApplause"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="XX:XX"
+                android:paddingStart="30dp"
+                android:textSize="30dp"
+                android:textAlignment="textEnd"
+                app:fontName="Roboto_Black"
+                android:onClick="onClick"
+                />
+        </TableRow>
+    </TableLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

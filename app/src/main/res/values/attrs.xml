@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="RmbiTextView">
+        <attr name="fontName" format="enum">
+            <enum name="Roboto_Black" value="1"/>
+            <enum name="Roboto_BlackItalic" value="2"/>
+            <enum name="Roboto_Bold" value="3"/>
+            <enum name="Roboto_BoldItalic" value="4"/>
+            <enum name="Roboto_Italic" value="5"/>
+            <enum name="Roboto_Light" value="6"/>
+            <enum name="Roboto_LightItalic" value="7"/>
+            <enum name="Roboto_Medium" value="8"/>
+            <enum name="Roboto_MediumItalic" value="9"/>
+            <enum name="Roboto_Regular" value="10"/>
+            <enum name="Roboto_Thin" value="11"/>
+            <enum name="Roboto_ThinItalic" value="12"/>
+
+        </attr>
+    </declare-styleable>
+
+</resources>
