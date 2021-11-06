@@ -111,13 +111,13 @@ public class GameFragment extends RmbiFragment implements DynamicCountdownTimer.
         switch (view.getId()) {
             case R.id.bTimeout:
                 seconds = Config.instance(getActivity()).getTimeoutSec() ;
-                _tvInfo.setText("Temps mort");
+                _tvInfo.setText(R.string.game_timeout_txt);
                 countDown(seconds,true);
                 break;
 
             case R.id.bHalftime:
                 seconds = Config.instance(getActivity()).getHalfTimeSec() ;
-                _tvInfo.setText("Half time");
+                _tvInfo.setText(R.string.game_halftime_txt);
                 countDown(seconds,true);
                 break;
             case R.id.tvInfo:

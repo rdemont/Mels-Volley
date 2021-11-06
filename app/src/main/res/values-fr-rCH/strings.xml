@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Mels-Volley</string>
+    <string name="hello_blank_fragment">Bonjour</string>
+    <string name="config_timeout">Temps mort</string>
+    <string name="config_halftime">Mi-temps</string>
+    <string name="config_attack_left">Attaques gauche</string>
+    <string name="config_service">Service</string>
+    <string name="config_applause">Applaudissement</string>
+    <string name="game_timeout_btn">Temps mort</string>
+    <string name="game_halftime_btn">Mi-temps</string>
+    <string name="pregame_attackleft_btn">Attaque Gauche</string>
+    <string name="pregame_attackright_btn">Attaque droite</string>
+    <string name="pregame_applause_btn">Applaudissement</string>
+    <string name="exit_btn_no">Non</string>
+    <string name="exit_btn_yes">Oui</string>
+    <string name="title_game">Match</string>
+    <string name="title_pregame">Pré-match</string>
+    <string name="title_config">Config</string>
+    <string name="title_sub">Mel\'s Volley</string>
+    <string name="config_vibrate_second">Vibration secondes</string>
+    <string name="config_attack_right">Attaques droite</string>
+    <string name="pregame_service_btn">Service</string>
+    <string name="game_timeout_txt">Temps mort</string>
+    <string name="game_halftime_txt">Mi-temps</string>
+</resources>

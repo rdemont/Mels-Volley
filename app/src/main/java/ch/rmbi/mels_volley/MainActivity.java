@@ -53,12 +53,11 @@ public class MainActivity extends AppCompatActivity { //implements SimpleGesture
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        getSupportActionBar().setSubtitle("Mel's Volley");
-        getSupportActionBar().setTitle("Match");
+        getSupportActionBar().setSubtitle(getString(R.string.title_sub));
+        getSupportActionBar().setTitle(getString(R.string.title_game));
 
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
-// Detect touched area
-        //_detector = new SimpleGestureFilter(this,this);
+
     }
 
 
@@ -75,96 +74,7 @@ public class MainActivity extends AppCompatActivity { //implements SimpleGesture
         vibrator.vibrate(milliseconds);
 
     }
-/*
-    public boolean dispatchTouchEvent(MotionEvent me){
-        // Call onTouchEvent of SimpleGestureFilter class
-        this._detector.onTouchEvent(me);
-        return super.dispatchTouchEvent(me);
-    }
 
-
-    @Override
-    public void onSwipe(int direction) {
-
-
-        switch (direction) {
-
-            case SimpleGestureFilter.SWIPE_RIGHT :
-                nextFragment();
-                break;
-            case SimpleGestureFilter.SWIPE_LEFT :
-                nextFragment();
-                break;
-            case SimpleGestureFilter.SWIPE_DOWN :
-                upFragment();
-                break;
-            case SimpleGestureFilter.SWIPE_UP :
-                upFragment();
-                break;
-
-        }
-
-    }
-
-
-
-    private void upFragment()
-    {
-
-        Fragment f = getSupportFragmentManager().findFragmentById(R.id.fcvMain);
-        RmbiFragment nextF = null ;
-        if ((f instanceof RmbiFragment) && !(f instanceof ConfigFragment))
-        {
-            _lastFragment = (RmbiFragment) f;
-        }
-
-        if (f instanceof ConfigFragment)
-        {
-            if (_lastFragment != null) {
-                nextF = _lastFragment;
-            }else {
-                nextF = new GameFragment();
-            }
-        }else {
-
-            nextF = new ConfigFragment();
-        }
-
-        ((RmbiFragment)f).onExitFragment();
-
-        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-        ft.replace(R.id.fcvMain, nextF);
-        ft.commit();
-    }
-
-    private void nextFragment()
-    {
-        Fragment f = getSupportFragmentManager().findFragmentById(R.id.fcvMain);
-        RmbiFragment nextF = null ;
-        if (f instanceof GameFragment)
-        {
-            nextF = new PregameFragment();
-        }
-        if (f instanceof PregameFragment)
-        {
-            nextF = new GameFragment();
-        }
-
-        if (nextF == null){
-            if (_lastFragment != null) {
-                nextF = _lastFragment;
-            }else {
-                nextF = new GameFragment();
-            }
-        }
-
-        ((RmbiFragment)f).onExitFragment();
-
-        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-        ft.replace(R.id.fcvMain, nextF);
-        ft.commit();
-    }
-*/
     private void openGameFragment()
     {
         Fragment f = getSupportFragmentManager().findFragmentById(R.id.fcvMain);
@@ -198,22 +108,10 @@ public class MainActivity extends AppCompatActivity { //implements SimpleGesture
         ft.replace(R.id.fcvMain, new ConfigFragment());
         ft.commit();
     }
-/*
-    @Override
-    public void onDoubleTap() {
-        //Toast.makeText(this, "Double Tap", Toast.LENGTH_SHORT).show();
-    }
-*/
+
     public void onDblClick(View view)  {
         Toast.makeText(this, "Click", Toast.LENGTH_SHORT).show();
-        /*
-        Fragment f = getSupportFragmentManager().findFragmentById(R.id.fcvMain);
-        if (f instanceof RmbiFragment)
-        {
-            ((RmbiFragment)f).onDblClick();
-        }
 
-         */
     }
 
     @Override
@@ -245,7 +143,7 @@ public class MainActivity extends AppCompatActivity { //implements SimpleGesture
                 openConfigFragment();
                 _menuTitle = "Back";
                 _menuIcon = getDrawable(R.drawable.ic_baseline_subdirectory_arrow_left_24);
-                getSupportActionBar().setTitle("Config");
+                getSupportActionBar().setTitle(R.string.title_config);
                 invalidateOptionsMenu();
                 return true ;
             case R.id.mitMatch:
@@ -257,11 +155,11 @@ public class MainActivity extends AppCompatActivity { //implements SimpleGesture
                 }
                 if (_isMatchFragment) {
                     _menuTitle = "Pré-Match";
-                    getSupportActionBar().setTitle("Match");
+                    getSupportActionBar().setTitle(R.string.title_game);
                     openGameFragment();
                 }else{
                     _menuTitle = "Match";
-                    getSupportActionBar().setTitle("Pré-match");
+                    getSupportActionBar().setTitle(R.string.title_pregame);
                     openPreGameFragment();
                 }
                 invalidateOptionsMenu();
@@ -300,14 +198,14 @@ public class MainActivity extends AppCompatActivity { //implements SimpleGesture
                 .setIcon(android.R.drawable.ic_dialog_alert)
                 .setTitle("Fermer l'application")
                 .setMessage("Etes-vous certain de vouloir fermer l'application")
-                .setPositiveButton("Oui", new DialogInterface.OnClickListener()
+                .setPositiveButton(R.string.exit_btn_yes, new DialogInterface.OnClickListener()
                 {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         finish();
                     }
                 })
-                .setNegativeButton("Non", null)
+                .setNegativeButton(R.string.exit_btn_no, null)
                 .show();
         //super.onBackPressed();
     }

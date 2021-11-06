@@ -1,34 +1,55 @@
 <resources>
-    <string name="app_name">Mels-Volley</string>
+    <string name="app_name" translatable="false">Mels-Volley</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <!-- Preference Titles -->
-    <string name="messages_header">Messages</string>
-    <string name="sync_header">Sync</string>
+    <string name="messages_header" translatable="false">Messages</string>
+    <string name="sync_header" translatable="false">Sync</string>
 
     <!-- Messages Preferences -->
-    <string name="signature_title">Your signature</string>
-    <string name="reply_title">Default reply action</string>
+    <string name="signature_title" translatable="false">Your signature</string>
+    <string name="reply_title" translatable="false">Default reply action</string>
 
     <!-- Sync Preferences -->
-    <string name="sync_title">Sync email periodically</string>
-    <string name="attachment_title">Download incoming attachments</string>
-    <string name="attachment_summary_on">Automatically download attachments for incoming emails
+    <string name="sync_title" translatable="false">Sync email periodically</string>
+    <string name="attachment_title" translatable="false">Download incoming attachments</string>
+    <string name="attachment_summary_on" translatable="false">Automatically download attachments for incoming emails
     </string>
-    <string name="attachment_summary_off">Only download attachments when manually requested</string>
+    <string name="attachment_summary_off" translatable="false">Only download attachments when manually requested</string>
 
 !-- font ID -->
-    <string name="Roboto_Black" >Roboto-Black</string>
-    <string name="Roboto_BlackItalic" >Roboto-BlackItalic</string>
-    <string name="Roboto_Bold" >Roboto-Bold</string>
-    <string name="Roboto_BoldItalic" >Roboto-BoldItalic</string>
-    <string name="Roboto_Italic" >Roboto-Italic</string>
-    <string name="Roboto_Light" >Roboto-Light</string>
-    <string name="Roboto_LightItalic" >Roboto-LightItalic</string>
-    <string name="Roboto_Medium" >Roboto-Medium</string>
-    <string name="Roboto_MediumItalic" >Roboto-MediumItalic</string>
-    <string name="Roboto_Regular" >Roboto-Regular</string>
-    <string name="Roboto_Thin" >Roboto-Thin</string>
-    <string name="Roboto_ThinItalic" >Roboto-ThinItalic</string>
+    <string name="Roboto_Black" translatable="false">Roboto-Black</string>
+    <string name="Roboto_BlackItalic" translatable="false">Roboto-BlackItalic</string>
+    <string name="Roboto_Bold" translatable="false">Roboto-Bold</string>
+    <string name="Roboto_BoldItalic" translatable="false">Roboto-BoldItalic</string>
+    <string name="Roboto_Italic" translatable="false">Roboto-Italic</string>
+    <string name="Roboto_Light" translatable="false">Roboto-Light</string>
+    <string name="Roboto_LightItalic" translatable="false">Roboto-LightItalic</string>
+    <string name="Roboto_Medium" translatable="false">Roboto-Medium</string>
+    <string name="Roboto_MediumItalic" translatable="false">Roboto-MediumItalic</string>
+    <string name="Roboto_Regular" translatable="false">Roboto-Regular</string>
+    <string name="Roboto_Thin" translatable="false">Roboto-Thin</string>
+    <string name="Roboto_ThinItalic" translatable="false">Roboto-ThinItalic</string>
+    <string name="config_vibrate_second">Vibration seconds</string>
+    <string name="config_timeout">Timeout</string>
+    <string name="config_halftime">Halftime</string>
+    <string name="config_attack_left">Left attacks</string>
+    <string name="config_attack_right">Right attacks</string>
+    <string name="config_service">Service</string>
+    <string name="config_applause">Applause</string>
+    <string name="game_timeout_btn">Timeout</string>
+    <string name="game_halftime_btn">Half time</string>
+    <string name="pregame_attackleft_btn">Left attacks</string>
+    <string name="pregame_attackright_btn">Right attaks</string>
+    <string name="pregame_service_btn">Service</string>
+    <string name="pregame_applause_btn">Applause</string>
+    <string name="exit_btn_no">No</string>
+    <string name="exit_btn_yes">Yes</string>
+    <string name="title_game">Match</string>
+    <string name="title_pregame">Pré-match</string>
+    <string name="title_config">Config</string>
+    <string name="title_sub">Mel\'s Volley</string>
+    <string name="game_timeout_txt">Timeout</string>
+    <string name="game_halftime_txt">Half time</string>
 
 </resources>
