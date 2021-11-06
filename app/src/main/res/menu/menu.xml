@@ -6,9 +6,13 @@
     <item
         android:id="@+id/mitMatch"
         android:title="Match"
-        app:showAsAction="always" />
+        android:icon="@drawable/ic_baseline_autorenew_24"
+        app:showAsAction="always"
+
+        />
     <item
         android:id="@+id/mitConfig"
-
+        android:icon="@drawable/ic_baseline_settings_24"
+        app:showAsAction="always"
         android:title="Config" />
 </menu>

@@ -1,11 +1,15 @@
 package ch.rmbi.mels_volley;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.content.DialogInterface;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Vibrator;
 import android.view.Menu;
@@ -16,15 +20,17 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity implements SimpleGestureFilter.SimpleGestureListener {
+public class MainActivity extends AppCompatActivity { //implements SimpleGestureFilter.SimpleGestureListener {
 
 
 
-    private SimpleGestureFilter _detector;
+    //private SimpleGestureFilter _detector;
     public long _vibrationSec = 0;
     private RmbiFragment _lastFragment = null ;
     private boolean _isMatchFragment = true ;
     private String _menuTitle = "Pré-Match" ;
+    private Drawable _menuIcon = null ;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +38,8 @@ public class MainActivity extends AppCompatActivity implements SimpleGestureFilt
         setContentView(R.layout.activity_main);
         getPreferences(MODE_PRIVATE);
 
+
+        _menuIcon = getDrawable(R.drawable.ic_baseline_autorenew_24);
         _vibrationSec = Config.instance(this).getVibrationSec();
 
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
@@ -41,9 +49,16 @@ public class MainActivity extends AppCompatActivity implements SimpleGestureFilt
         ft.commit();
 
 
+
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        getSupportActionBar().setSubtitle("Mel's Volley");
+        getSupportActionBar().setTitle("Match");
+
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
 // Detect touched area
-        _detector = new SimpleGestureFilter(this,this);
+        //_detector = new SimpleGestureFilter(this,this);
     }
 
 
@@ -60,12 +75,13 @@ public class MainActivity extends AppCompatActivity implements SimpleGestureFilt
         vibrator.vibrate(milliseconds);
 
     }
-
+/*
     public boolean dispatchTouchEvent(MotionEvent me){
         // Call onTouchEvent of SimpleGestureFilter class
         this._detector.onTouchEvent(me);
         return super.dispatchTouchEvent(me);
     }
+
 
     @Override
     public void onSwipe(int direction) {
@@ -148,7 +164,7 @@ public class MainActivity extends AppCompatActivity implements SimpleGestureFilt
         ft.replace(R.id.fcvMain, nextF);
         ft.commit();
     }
-
+*/
     private void openGameFragment()
     {
         Fragment f = getSupportFragmentManager().findFragmentById(R.id.fcvMain);
@@ -182,12 +198,12 @@ public class MainActivity extends AppCompatActivity implements SimpleGestureFilt
         ft.replace(R.id.fcvMain, new ConfigFragment());
         ft.commit();
     }
-
+/*
     @Override
     public void onDoubleTap() {
         //Toast.makeText(this, "Double Tap", Toast.LENGTH_SHORT).show();
     }
-
+*/
     public void onDblClick(View view)  {
         Toast.makeText(this, "Click", Toast.LENGTH_SHORT).show();
         /*
@@ -215,6 +231,8 @@ public class MainActivity extends AppCompatActivity implements SimpleGestureFilt
         MenuItem item = menu.findItem(R.id.mitMatch);
 
         item.setTitle(_menuTitle);
+        item.setIcon(_menuIcon);
+
 
         return true ;
 
@@ -226,19 +244,24 @@ public class MainActivity extends AppCompatActivity implements SimpleGestureFilt
             case R.id.mitConfig:
                 openConfigFragment();
                 _menuTitle = "Back";
+                _menuIcon = getDrawable(R.drawable.ic_baseline_subdirectory_arrow_left_24);
+                getSupportActionBar().setTitle("Config");
                 invalidateOptionsMenu();
                 return true ;
             case R.id.mitMatch:
                 Fragment f = getSupportFragmentManager().findFragmentById(R.id.fcvMain);
+                _menuIcon = getDrawable(R.drawable.ic_baseline_autorenew_24);
                 if (!(f instanceof ConfigFragment))
                 {
                     _isMatchFragment = ! _isMatchFragment;
                 }
                 if (_isMatchFragment) {
                     _menuTitle = "Pré-Match";
+                    getSupportActionBar().setTitle("Match");
                     openGameFragment();
                 }else{
                     _menuTitle = "Match";
+                    getSupportActionBar().setTitle("Pré-match");
                     openPreGameFragment();
                 }
                 invalidateOptionsMenu();
@@ -265,16 +288,28 @@ public class MainActivity extends AppCompatActivity implements SimpleGestureFilt
     @Override
     public void onBackPressed() {
         Fragment f = getSupportFragmentManager().findFragmentById(R.id.fcvMain);
-        if (f instanceof RmbiFragment)
-        {
-            if (f instanceof ConfigFragment){
-                ((RmbiFragment)f).onExitFragment();
+        if (f instanceof RmbiFragment) {
+            if ((f instanceof ConfigFragment) || (f instanceof PregameFragment)) {
+                ((RmbiFragment) f).onExitFragment();
                 openGameFragment();
-                return ;
+                return;
             }
 
         }
-        super.onBackPressed();
+        new AlertDialog.Builder(this)
+                .setIcon(android.R.drawable.ic_dialog_alert)
+                .setTitle("Fermer l'application")
+                .setMessage("Etes-vous certain de vouloir fermer l'application")
+                .setPositiveButton("Oui", new DialogInterface.OnClickListener()
+                {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        finish();
+                    }
+                })
+                .setNegativeButton("Non", null)
+                .show();
+        //super.onBackPressed();
     }
 
     public void onClick(View view)  {

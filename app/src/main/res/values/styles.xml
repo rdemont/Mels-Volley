@@ -23,8 +23,8 @@
     <style name="checkbox_custom" parent="@style/Widget.AppCompat.CompoundButton.CheckBox">
         <item name="android:gravity">center_vertical|left</item>
         <item name="android:textColor">@color/font_color</item>
-        <item name="android:colorControlNormal">#FF2020E7</item>
-        <item name="android:colorControlActivated">#FF2020E7</item>
+        <item name="android:colorControlNormal">@color/backgroud_color</item>
+        <item name="android:colorControlActivated">@color/backgroud_color</item>
         <item name="android:colorControlHighlight">#c51162</item>
 
         <!-- <item name="android:textColor">#FFFFFFFF</item> -->

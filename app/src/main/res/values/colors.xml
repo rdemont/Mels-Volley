@@ -10,4 +10,6 @@
 
 
     <color name="font_color">#FFD3C6C6</color>
+    <color name="backgroud_color">#FF2196F3</color>
+
 </resources>
