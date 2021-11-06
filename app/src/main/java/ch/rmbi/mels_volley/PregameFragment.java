@@ -8,7 +8,10 @@ import android.os.CountDownTimer;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
+
+import ch.rmbi.mels_volley.views.RmbiNumberProgressBar;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -17,10 +20,21 @@ import android.widget.TextView;
  */
 public class PregameFragment extends RmbiFragment  {
 
-    TextView tvAttackLeft;
-    TextView tvAttackRight ;
-    TextView tvService;
-    TextView tvApplause ;
+    //TextView tvAttackLeft;
+    //TextView _tvAttackRight;
+    //TextView _tvService;
+    //TextView _tvApplause;
+
+    Button _btAttackLeft;
+    Button _btAttackRight;
+    Button _btService;
+    Button _btApplause;
+
+    RmbiNumberProgressBar _npbAttackLeft;
+    RmbiNumberProgressBar _npbAttackRight ;
+    RmbiNumberProgressBar _npbService;
+    RmbiNumberProgressBar _npbApplause ;
+
 
 
     PreGameCountDown _cdtAttackLeft = null ;
@@ -73,17 +87,77 @@ public class PregameFragment extends RmbiFragment  {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        tvAttackLeft = view.findViewById(R.id.tvAttackLeft);
-        tvAttackRight = view.findViewById(R.id.tvAttackRight);
-        tvService = view.findViewById(R.id.tvService);
-        tvApplause = view.findViewById(R.id.tvApplause);
+        //tvAttackLeft = view.findViewById(R.id.tvAttackLeft);
+        //_tvAttackRight = view.findViewById(R.id.tvAttackRight);
+        //_tvService = view.findViewById(R.id.tvService);
+        //_tvApplause = view.findViewById(R.id.tvApplause);
 
-        tvAttackLeft.setText("");
-        tvAttackRight.setText("");
-        tvService.setText("");
-        tvApplause.setText("");
+        //tvAttackLeft.setText("");
+        //_tvAttackRight.setText("");
+        //_tvService.setText("");
+        //_tvApplause.setText("");
         // Inflate the layout for this fragment
 
+
+        _btAttackLeft = view.findViewById(R.id.bAttackLeft);
+        _btAttackRight = view.findViewById(R.id.bAttackRight);
+        _btService = view.findViewById(R.id.bService);
+        _btApplause = view.findViewById(R.id.bApplause);
+
+        _npbAttackLeft = view.findViewById(R.id.npbAttackLeft);
+        _npbAttackRight = view.findViewById(R.id.npbAttackRight);
+        _npbService = view.findViewById(R.id.npbService);
+        _npbApplause = view.findViewById(R.id.npbApplause);
+
+
+        _npbAttackLeft.setMax(Config.instance(getActivity()).getAttackLeft());
+        _npbAttackLeft.setProgress(Config.instance(getActivity()).getAttackLeft());
+
+
+        _npbAttackRight.setMax(Config.instance(getActivity()).getAttackRight());
+        _npbAttackRight.setProgress(Config.instance(getActivity()).getAttackRight());
+
+
+        _npbService.setMax(Config.instance(getActivity()).getService());
+        _npbService.setProgress(Config.instance(getActivity()).getService());
+
+
+        _npbApplause.setMax(Config.instance(getActivity()).getApplause());
+        _npbApplause.setProgress(Config.instance(getActivity()).getApplause());
+
+
+
+        if (Config.instance(getActivity()).getAttackLeft() <= 0 ){
+            _npbAttackLeft.setVisibility(View.INVISIBLE);
+            _btAttackLeft.setVisibility(View.INVISIBLE);
+        }else {
+            _npbAttackLeft.setVisibility(View.VISIBLE);
+            _btAttackLeft.setVisibility(View.VISIBLE);
+        }
+
+        if (Config.instance(getActivity()).getAttackRight() <= 0 ){
+            _npbAttackRight.setVisibility(View.INVISIBLE);
+            _btService.setVisibility(View.INVISIBLE);
+        }else {
+            _npbAttackRight.setVisibility(View.VISIBLE);
+            _btAttackRight.setVisibility(View.VISIBLE);
+        }
+
+        if (Config.instance(getActivity()).getService() <= 0 ){
+            _npbService.setVisibility(View.INVISIBLE);
+            _btService.setVisibility(View.INVISIBLE);
+        }else {
+            _npbService.setVisibility(View.VISIBLE);
+            _btService.setVisibility(View.VISIBLE);
+        }
+
+        if (Config.instance(getActivity()).getApplause() <= 0 ){
+            _npbApplause.setVisibility(View.INVISIBLE);
+            _btApplause.setVisibility(View.INVISIBLE);
+        }else {
+            _npbApplause.setVisibility(View.VISIBLE);
+            _btApplause.setVisibility(View.VISIBLE);
+        }
     }
 
     @Override
@@ -91,8 +165,14 @@ public class PregameFragment extends RmbiFragment  {
                              Bundle savedInstanceState) {
 
 
+
+
+
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_pregame, container, false);
+
+
+
     }
 
 
@@ -102,7 +182,8 @@ public class PregameFragment extends RmbiFragment  {
         CountDownTimer cdt = null ;
         TextView tv = null ;
         switch (view.getId()) {
-            case R.id.tvAttackLeft:
+
+            case R.id.npbAttackLeft:
                 if (_cdtAttackLeft != null)
                 {
                     if (_cdtAttackLeft.isRunning()){
@@ -112,7 +193,9 @@ public class PregameFragment extends RmbiFragment  {
                     }
                 }
                 break;
-            case R.id.tvAttackRight:
+
+            case R.id.npbAttackRight:
+
                 if (_cdtAttackRight != null)
                 {
                     if (_cdtAttackRight.isRunning()){
@@ -122,7 +205,7 @@ public class PregameFragment extends RmbiFragment  {
                     }
                 }
                 break;
-            case R.id.tvService:
+            case R.id.npbService:
                 if (_cdtService != null)
                 {
                     if (_cdtService.isRunning()){
@@ -132,7 +215,7 @@ public class PregameFragment extends RmbiFragment  {
                     }
                 }
                 break;
-            case R.id.tvApplause:
+            case R.id.npbApplause:
                 if (_cdtApplause != null)
                 {
                     if (_cdtApplause.isRunning()){
@@ -148,7 +231,8 @@ public class PregameFragment extends RmbiFragment  {
                 if (_cdtAttackLeft != null){
                     _cdtAttackLeft.stop();
                 }
-                _cdtAttackLeft = new PreGameCountDown(seconds,tvAttackLeft,getActivity());
+
+                _cdtAttackLeft = new PreGameCountDown(seconds,null, _npbAttackLeft,getActivity());
                 _cdtAttackLeft.start();
                 break;
 
@@ -157,7 +241,7 @@ public class PregameFragment extends RmbiFragment  {
                 if (_cdtAttackRight != null){
                     _cdtAttackRight.stop();
                 }
-                _cdtAttackRight = new PreGameCountDown(seconds,tvAttackRight,getActivity());
+                _cdtAttackRight = new PreGameCountDown(seconds, null, _npbAttackRight,getActivity());
                 _cdtAttackRight.start();
                 break;
             case R.id.bService:
@@ -165,7 +249,7 @@ public class PregameFragment extends RmbiFragment  {
                 if (_cdtService!= null){
                     _cdtService.stop();
                 }
-                _cdtService = new PreGameCountDown(seconds,tvService,getActivity());
+                _cdtService = new PreGameCountDown(seconds, null,_npbService,getActivity());
                 _cdtService.start();
                 break;
             case R.id.bApplause:
@@ -173,7 +257,7 @@ public class PregameFragment extends RmbiFragment  {
                 if (_cdtApplause != null){
                     _cdtApplause.stop();
                 }
-                _cdtApplause = new PreGameCountDown(seconds,tvApplause,getActivity());
+                _cdtApplause = new PreGameCountDown(seconds, null,_npbApplause,getActivity());
                 _cdtApplause.start();
                 break;
         }
@@ -181,6 +265,7 @@ public class PregameFragment extends RmbiFragment  {
 
     @Override
     public void onExitFragment() {
+
         if (_cdtAttackLeft != null)
         {
             _cdtAttackLeft.stop();
@@ -197,6 +282,8 @@ public class PregameFragment extends RmbiFragment  {
         {
             _cdtApplause.stop();
         }
+
+
     }
 
 }

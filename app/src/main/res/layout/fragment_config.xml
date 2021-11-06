@@ -1,14 +1,371 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ConfigFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="match_parent">
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical" >
+
+
+            <!-- VIBRATION -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <ch.rmbi.mels_volley.views.RmbiCheckbox
+                    android:id="@+id/cbVibration"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="start"
+                    android:text="Vibration secondes"
+                    android:textSize="20dp"
+                    style="@style/checkbox_custom"
+                    android:theme="@style/checkbox_custom"
+                    app:fontName="Roboto_Medium" />
+
+
+                <ch.rmbi.mels_volley.views.RmbiTextView
+                    android:id="@+id/tvVibrationVal"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="end"
+                    android:text="5000"
+                    android:paddingHorizontal="10dp"
+                    android:textSize="20dp"
+                    app:fontName="Roboto_Medium" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <ch.rmbi.mels_volley.views.RmbiSeekBar
+                    android:id="@+id/sbVibration"
+                    style="@style/seekbar_custom"
+                    android:theme="@style/seekbar_custom"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:minWidth="80dp"
+                    android:layout_gravity="center"
+                    app:textFormat="none"
+                    android:max="10"
+                    android:min="0"
+                    android:progress="1" />
+            </LinearLayout>
+
+
+            <!-- TIMEOUT -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <ch.rmbi.mels_volley.views.RmbiCheckbox
+                    android:id="@+id/cbTimeout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Temps mort"
+                    style="@style/checkbox_custom"
+                    android:theme="@style/checkbox_custom"
+                    android:textSize="20dp"
+                    app:fontName="Roboto_Medium" />
+
+
+                <ch.rmbi.mels_volley.views.RmbiTextView
+                    android:id="@+id/tvTimeoutVal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="5000"
+                    android:paddingHorizontal="10dp"
+                    android:textSize="20dp"
+                    app:fontName="Roboto_Medium" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+
+                <ch.rmbi.mels_volley.views.RmbiSeekBar
+                    android:id="@+id/sbTimeout"
+                    style="@style/seekbar_custom"
+                    android:theme="@style/seekbar_custom"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:minWidth="80dp"
+                    android:layout_gravity="center"
+                    android:max="60"
+                    android:min="0"
+                    app:step="10"
+                    app:textFormat="Second"
+                    android:progress="10" />
+            </LinearLayout>
+
+
+            <!-- half time -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <ch.rmbi.mels_volley.views.RmbiCheckbox
+                    android:id="@+id/cbHalftime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Mi-temps"
+                    style="@style/checkbox_custom"
+                    android:theme="@style/checkbox_custom"
+                    android:textSize="20dp"
+                    app:fontName="Roboto_Medium" />
+
+
+                <ch.rmbi.mels_volley.views.RmbiTextView
+                    android:id="@+id/tvHalftimeVal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="5000"
+                    android:paddingHorizontal="10dp"
+                    android:textSize="20dp"
+                    app:fontName="Roboto_Medium" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+
+                <ch.rmbi.mels_volley.views.RmbiSeekBar
+                    android:id="@+id/sbHalftime"
+                    style="@style/seekbar_custom"
+                    android:theme="@style/seekbar_custom"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:minWidth="80dp"
+                    android:layout_gravity="center"
+                    android:max="600"
+                    android:min="0"
+                    app:step="30"
+                    app:textFormat="Second"
+                    android:progress="10" />
+            </LinearLayout>
+
+
+
+            <!-- LEFT ATTACK -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <ch.rmbi.mels_volley.views.RmbiCheckbox
+                    android:id="@+id/cbAttackLeft"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Attaques gauche"
+                    android:textSize="20dp"
+                    style="@style/checkbox_custom"
+                    android:theme="@style/checkbox_custom"
+                    app:fontName="Roboto_Medium" />
+
+
+                <ch.rmbi.mels_volley.views.RmbiTextView
+                    android:id="@+id/tvAttackLeftVal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="5000"
+                    android:paddingHorizontal="10dp"
+                    android:textSize="20dp"
+                    app:fontName="Roboto_Medium"
+                    style="@style/textview_custom"
+                    android:theme="@style/textview_custom"
+                    />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <ch.rmbi.mels_volley.views.RmbiSeekBar
+                    android:id="@+id/sbAttackLeft"
+                    style="@style/seekbar_custom"
+                    android:theme="@style/seekbar_custom"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:minWidth="80dp"
+                    android:layout_gravity="center"
+                    android:max="600"
+                    android:min="0"
+                    app:step="30"
+                    app:textFormat="Second"
+                    android:progress="1" />
+            </LinearLayout>
+
+
+            <!-- RIGHT ATTACK -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <ch.rmbi.mels_volley.views.RmbiCheckbox
+                    android:id="@+id/cbAttackRight"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Attaques droite"
+                    android:textSize="20dp"
+                    style="@style/checkbox_custom"
+                    android:theme="@style/checkbox_custom"
+                    app:fontName="Roboto_Medium" />
+
+
+                <ch.rmbi.mels_volley.views.RmbiTextView
+                    android:id="@+id/tvAttackRightVal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="5000"
+                    android:paddingHorizontal="10dp"
+                    android:textSize="20dp"
+                    app:fontName="Roboto_Medium" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+
+            <ch.rmbi.mels_volley.views.RmbiSeekBar
+                android:id="@+id/sbAttackRight"
+                style="@style/seekbar_custom"
+                android:theme="@style/seekbar_custom"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:minWidth="80dp"
+                android:layout_gravity="center"
+                android:max="600"
+                android:min="0"
+                app:step="30"
+                app:textFormat="Second"
+                android:progress="1" />
+            </LinearLayout>
+
+            <!-- SERVICE -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <ch.rmbi.mels_volley.views.RmbiCheckbox
+                    android:id="@+id/cbService"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Service"
+                    android:textSize="20dp"
+                    style="@style/checkbox_custom"
+                    android:theme="@style/checkbox_custom"
+                    app:fontName="Roboto_Medium" />
+
+
+                <ch.rmbi.mels_volley.views.RmbiTextView
+                    android:id="@+id/tvServiceVal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="5000"
+                    android:paddingHorizontal="10dp"
+                    android:textSize="20dp"
+                    app:fontName="Roboto_Medium" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+
+                <ch.rmbi.mels_volley.views.RmbiSeekBar
+                    android:id="@+id/sbService"
+                    style="@style/seekbar_custom"
+                    android:theme="@style/seekbar_custom"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:minWidth="80dp"
+                    android:layout_gravity="center"
+                    android:max="600"
+                    android:min="0"
+                    app:step="30"
+                    app:textFormat="Second"
+                    android:progress="1" />
+            </LinearLayout>
+
+            <!-- APPLAUSE -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <ch.rmbi.mels_volley.views.RmbiCheckbox
+                    android:id="@+id/cbApplause"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Applaudissement"
+                    android:textSize="20dp"
+                    style="@style/checkbox_custom"
+                    android:theme="@style/checkbox_custom"
+                    app:fontName="Roboto_Medium" />
+
+
+                <ch.rmbi.mels_volley.views.RmbiTextView
+                    android:id="@+id/tvApplauseVal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="5000"
+                    android:paddingHorizontal="10dp"
+                    android:textSize="20dp"
+                    app:fontName="Roboto_Medium" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+
+                <ch.rmbi.mels_volley.views.RmbiSeekBar
+                    android:id="@+id/sbApplause"
+                    style="@style/seekbar_custom"
+                    android:theme="@style/seekbar_custom"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:minWidth="80dp"
+                    android:layout_gravity="center"
+                    android:max="600"
+                    android:min="0"
+                    app:step="30"
+                    app:textFormat="Second"
+                    android:progress="1" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
 </FrameLayout>

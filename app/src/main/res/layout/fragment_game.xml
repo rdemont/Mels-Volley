@@ -19,7 +19,7 @@
         app:layout_constraintTop_toTopOf="parent"
         android:paddingHorizontal="80dip"
         android:paddingVertical="40dip"
-        app:fontName="Roboto_Black"
+        app:fontName="Roboto_Medium"
         style="@style/button_custom"/>
 
     <ch.rmbi.mels_volley.views.RmbiTextView
@@ -31,7 +31,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvInfo"
-        app:fontName="Roboto_Black"
+        app:fontName="Roboto_Medium"
         android:onClick="onClick"
         />
 
@@ -45,7 +45,7 @@
         android:text="Half time"
         android:textSize="30dp"
         android:textAppearance="@style/TextAppearance.AppCompat.Display3"
-        app:fontName="Roboto_Black"
+        app:fontName="Roboto_Medium"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         android:paddingHorizontal="80dip"
@@ -62,7 +62,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/bTimeout"
-        app:fontName="Roboto_Black"
+        app:fontName="Roboto_Medium"
         android:onClick="onClick"
         />
 

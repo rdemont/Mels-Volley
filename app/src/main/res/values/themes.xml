@@ -14,6 +14,6 @@
         <!-- Customize your theme here. -->
 
         <item name="android:buttonStyle">@style/button_custom</item>
-
+        <item name="android:checkboxStyle">@style/checkbox_custom</item>
     </style>
 </resources>

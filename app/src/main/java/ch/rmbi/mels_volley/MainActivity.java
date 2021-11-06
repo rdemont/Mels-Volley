@@ -1,5 +1,6 @@
 package ch.rmbi.mels_volley;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.fragment.app.Fragment;
@@ -7,6 +8,9 @@ import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
 import android.os.Vibrator;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
@@ -16,9 +20,11 @@ public class MainActivity extends AppCompatActivity implements SimpleGestureFilt
 
 
 
-    private SimpleGestureFilter detector;
-    public long vibrationMill = 0;
+    private SimpleGestureFilter _detector;
+    public long _vibrationSec = 0;
     private RmbiFragment _lastFragment = null ;
+    private boolean _isMatchFragment = true ;
+    private String _menuTitle = "Pré-Match" ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,7 +32,7 @@ public class MainActivity extends AppCompatActivity implements SimpleGestureFilt
         setContentView(R.layout.activity_main);
         getPreferences(MODE_PRIVATE);
 
-        vibrationMill = Config.instance(this).getVibrationMill();
+        _vibrationSec = Config.instance(this).getVibrationSec();
 
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 
@@ -37,14 +43,15 @@ public class MainActivity extends AppCompatActivity implements SimpleGestureFilt
 
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
 // Detect touched area
-        detector = new SimpleGestureFilter(this,this);
+        _detector = new SimpleGestureFilter(this,this);
     }
 
 
 
     public void vibrateDefault()
     {
-        vibrate(vibrationMill);
+
+        vibrate(_vibrationSec *1000);
     }
 
     public void vibrate(long milliseconds)
@@ -56,7 +63,7 @@ public class MainActivity extends AppCompatActivity implements SimpleGestureFilt
 
     public boolean dispatchTouchEvent(MotionEvent me){
         // Call onTouchEvent of SimpleGestureFilter class
-        this.detector.onTouchEvent(me);
+        this._detector.onTouchEvent(me);
         return super.dispatchTouchEvent(me);
     }
 
@@ -142,6 +149,40 @@ public class MainActivity extends AppCompatActivity implements SimpleGestureFilt
         ft.commit();
     }
 
+    private void openGameFragment()
+    {
+        Fragment f = getSupportFragmentManager().findFragmentById(R.id.fcvMain);
+        if (f instanceof RmbiFragment)
+        {
+            ((RmbiFragment)f).onExitFragment();
+        }
+        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+        ft.replace(R.id.fcvMain, new GameFragment());
+        ft.commit();
+    }
+
+    private void openPreGameFragment(){
+        Fragment f = getSupportFragmentManager().findFragmentById(R.id.fcvMain);
+        if (f instanceof RmbiFragment)
+        {
+            ((RmbiFragment)f).onExitFragment();
+        }
+        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+        ft.replace(R.id.fcvMain, new PregameFragment());
+        ft.commit();
+    }
+
+    private void openConfigFragment(){
+        Fragment f = getSupportFragmentManager().findFragmentById(R.id.fcvMain);
+        if (f instanceof RmbiFragment)
+        {
+            ((RmbiFragment)f).onExitFragment();
+        }
+        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+        ft.replace(R.id.fcvMain, new ConfigFragment());
+        ft.commit();
+    }
+
     @Override
     public void onDoubleTap() {
         //Toast.makeText(this, "Double Tap", Toast.LENGTH_SHORT).show();
@@ -157,6 +198,83 @@ public class MainActivity extends AppCompatActivity implements SimpleGestureFilt
         }
 
          */
+    }
+
+    @Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
+
+        return super.onPrepareOptionsMenu(menu);
+
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu,menu);
+
+        MenuItem item = menu.findItem(R.id.mitMatch);
+
+        item.setTitle(_menuTitle);
+
+        return true ;
+
+    }
+
+    private boolean menuEvent(MenuItem item){
+
+        switch (item.getItemId()){
+            case R.id.mitConfig:
+                openConfigFragment();
+                _menuTitle = "Back";
+                invalidateOptionsMenu();
+                return true ;
+            case R.id.mitMatch:
+                Fragment f = getSupportFragmentManager().findFragmentById(R.id.fcvMain);
+                if (!(f instanceof ConfigFragment))
+                {
+                    _isMatchFragment = ! _isMatchFragment;
+                }
+                if (_isMatchFragment) {
+                    _menuTitle = "Pré-Match";
+                    openGameFragment();
+                }else{
+                    _menuTitle = "Match";
+                    openPreGameFragment();
+                }
+                invalidateOptionsMenu();
+                return true;
+        }
+        return false;
+    }
+
+    @Override
+    public boolean onContextItemSelected(@NonNull MenuItem item) {
+        if (menuEvent(item))
+            return true ;
+        return super.onContextItemSelected(item);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if (menuEvent(item))
+            return true ;
+
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onBackPressed() {
+        Fragment f = getSupportFragmentManager().findFragmentById(R.id.fcvMain);
+        if (f instanceof RmbiFragment)
+        {
+            if (f instanceof ConfigFragment){
+                ((RmbiFragment)f).onExitFragment();
+                openGameFragment();
+                return ;
+            }
+
+        }
+        super.onBackPressed();
     }
 
     public void onClick(View view)  {

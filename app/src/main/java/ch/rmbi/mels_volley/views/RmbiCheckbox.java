@@ -7,23 +7,22 @@ import android.util.AttributeSet;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.widget.AppCompatTextView;
+import androidx.appcompat.widget.AppCompatCheckBox;
+
 import ch.rmbi.mels_volley.R;
 
-
-public class RmbiTextView  extends AppCompatTextView {
-
-
-    public RmbiTextView(@NonNull Context context) {
+public class RmbiCheckbox extends AppCompatCheckBox {
+    public RmbiCheckbox(@NonNull Context context) {
         super(context);
+
     }
 
-    public RmbiTextView(@NonNull Context context, @Nullable AttributeSet attrs) {
+    public RmbiCheckbox(@NonNull Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
         applyStyle(context,attrs);
     }
 
-    public RmbiTextView(@NonNull Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
+    public RmbiCheckbox(@NonNull Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         applyStyle(context,attrs);
     }

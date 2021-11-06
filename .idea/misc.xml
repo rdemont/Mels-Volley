@@ -4,17 +4,23 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="../../../../../layout/custom_preview.xml" value="0.15" />
+        <entry key="app/src/main/res/drawable/border_shadow.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/button.xml" value="0.2078125" />
         <entry key="app/src/main/res/drawable/button_custom.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/button_disabled.xml" value="0.2078125" />
         <entry key="app/src/main/res/drawable/button_enabled.xml" value="0.2078125" />
         <entry key="app/src/main/res/drawable/button_focused.xml" value="0.2078125" />
         <entry key="app/src/main/res/drawable/button_pressed.xml" value="0.2078125" />
+        <entry key="app/src/main/res/drawable/custom_thumb.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/progressbar_custom.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/seekbar_custom.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/seekbar_progress.xml" value="0.18" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_pregame.xml" value="0.19166666666666668" />
-        <entry key="app/src/main/res/layout/fragment_config.xml" value="0.13489583333333333" />
+        <entry key="app/src/main/res/layout/fragment_config.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_game.xml" value="0.2318840579710145" />
-        <entry key="app/src/main/res/layout/fragment_pregame.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/fragment_pregame.xml" value="0.1" />
+        <entry key="app/src/main/res/menu/menu.xml" value="0.25" />
       </map>
     </option>
   </component>

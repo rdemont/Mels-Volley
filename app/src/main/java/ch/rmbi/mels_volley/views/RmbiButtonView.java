@@ -19,11 +19,12 @@ public class RmbiButtonView extends AppCompatButton {
 
     public RmbiButtonView(@NonNull Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
+        applyStyle(context,attrs);
     }
 
     public RmbiButtonView(@NonNull Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-
+        applyStyle(context,attrs);
     }
 
 
